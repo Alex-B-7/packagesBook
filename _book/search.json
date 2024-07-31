@@ -1,0 +1,142 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "packagesBook",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book on how to build a package in R Studio",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Getting started",
+    "section": "",
+    "text": "First you need to open a new session in R Studio.\nInstall the devtools package if you don’t already\ninstall.packages(\"devtools\")\nLoad the devtools package\nlibrary(devtools)\nCreate the new package\ncreate_package(\"~/Desktop/bookDemo\")\nAfter you create the package R Studio will open a new session in the working directory that you created the package with. Creating the package will create some files with it including a “DESCRIPTION” and “NAMESPACE” file along with some others.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Getting started</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Summary",
+    "section": "",
+    "text": "You should now have your first package constructed and ready to be pushed to GitHub.",
+    "crumbs": [
+      "Summary"
+    ]
+  },
+  {
+    "objectID": "git.html",
+    "href": "git.html",
+    "title": "2  Setting up Git",
+    "section": "",
+    "text": "In this chapter we will look at how to set up Git for our R package.\n\nOpen GitHub and create a new repository\nOpen a new terminal in R Studio\nWe need to connect the remote repository from GitHub to our local repository\nInitialize Git\ngit init\nAdd your project files to the Git repository\ngit add .\nCommit the files with the message “Initial commit”\ngit commit -m \"Initial commit\"\nAdd the GitHub remote repository\ngit remote add origin https://github.com/Alex-B-7/bookDemo.git\nYou can now check your repository on GitHub and see all of your project files",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Setting up Git</span>"
+    ]
+  },
+  {
+    "objectID": "addCode.html",
+    "href": "addCode.html",
+    "title": "3  Adding R code to package",
+    "section": "",
+    "text": "Make sure to reload devtools since we opened a new session when we created the package\nlibrary(devtools)\nOpen a new R Script and write some code. This code takes the variable x and splits on every “,”\nx &lt;- \"alpha,beta,charlie,delta\"\n\nstrsplit(x, split = \",\")\nLet’s turn it into a function\nstrsplit1 &lt;- function(x, split){\n\n  strsplit(x, split = split)[[1]]\n}\nTest the function\nstrsplit1(x, split = \",\")\n\nOutput: [1] “alpha” “beta” “charlie” “delta”",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Adding R code to package</span>"
+    ]
+  },
+  {
+    "objectID": "use_r.html",
+    "href": "use_r.html",
+    "title": "4  use_r() function",
+    "section": "",
+    "text": "We want to create a new script with our function in it for our package. We can do this with the use_r() function\nuse_r(\"strsplit1\")\nCopy over the function from the original R Script into the new R Script called strsplit1.R that was just created from the use_r() function\nstrsplit1 &lt;- function(x, split){\n\n  strsplit(x, split = split)[[1]]\n}",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>use_r() function</span>"
+    ]
+  },
+  {
+    "objectID": "loadall.html",
+    "href": "loadall.html",
+    "title": "5  load_all() function",
+    "section": "",
+    "text": "To get strsplit1 loaded into the console we need to run the function load_all()\nload_all()\n\nOutput: Loading “package name”\n\nNow we want to test the strsplit1() function again\nstrsplit1(x, split = \",\")\n\nOutput: [1] “alpha” “beta” “charlie” “delta”\n\nCommit the new strsplit1.R file under the “Git” pane in R Studio. Check the box in the “Staged” column then click “Commit”, write a short message such as “Create strsplit1 function” and click “Commit” one last time.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>load_all() function</span>"
+    ]
+  },
+  {
+    "objectID": "check.html",
+    "href": "check.html",
+    "title": "6  check() function",
+    "section": "",
+    "text": "Let’s check how our package is doing so far. You can do this by running the check() function\ncheck()\n\nOutput:\nchecking DESCRIPTION meta-information … WARNING Non-standard license specification: use_mit_license(), use_gpl3_license() or friends to pick a license Standardizable: FALSE\n0 errors ✔ | 1 warning ✖ | 0 notes ✔\n\nYou should get an output similar to this with one warning indicating we don’t have a license yet for the package. We will fix this later",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>check() function</span>"
+    ]
+  },
+  {
+    "objectID": "description.html",
+    "href": "description.html",
+    "title": "7  Description and License",
+    "section": "",
+    "text": "Open the “DESCRIPTION” file that was created for you when we first create the package\nEdit the title to fit your package description. Example: “Exciting package for working with strings”\nAlso edit the Author with your first and last name and email\nYou can also change the description to explain more what your package is about\nWhen you are done editing the “DESCRIPTION” file it should look something like this:\n\nPackage: bookDemo\nTitle: Exciting package for working with strings\nVersion: 0.0.0.9000\nAuthors@R: \n    person(\"Alex\", \"Boyle\", , \"abboyle@ksu.edu\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"YOUR-ORCID-ID\"))\nDescription: String manipulation package that goes above and beyond what other packages do\nLicense: `use_mit_license()`, `use_gpl3_license()` or friends to pick a\n    license\nEncoding: UTF-8\nRoxygen: list(markdown = TRUE)\nRoxygenNote: 7.3.2\n\nNow we can set up the license. I am going to use an mit license for this package\nuse_mit_license()\nThis will update the license portion of the “DESCRIPTION” file and also create a new “LICENSE” file and “LICENSE.md” file\nCommit these changes",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Description and License</span>"
+    ]
+  },
+  {
+    "objectID": "documentation.html",
+    "href": "documentation.html",
+    "title": "8  Documentation",
+    "section": "",
+    "text": "Now we need to create documentation for our package so people can use the “?” if they need help\nGo back the the strsplit1.R file. Move your cursor the the very front of the function, click on the “Code” tab and the top then “Insert Roxygen Skeleton”\n#' Title\n#'\n#' @param x \n#' @param split \n#'\n#' @return\n#' @export\n#'\n#' @examples\nstrsplit1 &lt;- function(x, split){\n\n  strsplit(x, split = split)[[1]]\n}\nNow we want to edit the roxygen skeleton to document our package. It should look like this:\n#' Split a string\n#'\n#' @param x A character vector with one element\n#' @param split What to split on\n#'\n#' @return A character vector\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alpha,beta,charlie,delta\"\n#' strsplit1(x, \",\")\nstrsplit1 &lt;- function(x, split){\n\n  strsplit(x, split = split)[[1]]\n}\nNow type “document()” in the console to upload the documentation, then type “?strsplit1” in the console to see the documentation appear in the Help pane",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Documentation</span>"
+    ]
+  },
+  {
+    "objectID": "install.html",
+    "href": "install.html",
+    "title": "9  install() the package",
+    "section": "",
+    "text": "We are ready to install the package. Type “install()” in the console\nYou can now search your package in the “Packages” tab and see that your package is installed\nTest to make sure the package is working\nstrsplit1(x, \",\")\n\nOutput: “alpha” “beta” “charlie” “delta”",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>install() the package</span>"
+    ]
+  },
+  {
+    "objectID": "test.html",
+    "href": "test.html",
+    "title": "10  Testing framework",
+    "section": "",
+    "text": "To further test our package we can use the use_testthat function. Go ahead and run it in the console\nuse_testthat\nAfter running that, you will see a new “tests” folder appear in the Files tab.\nTo create a test, use the use_test() function\nuse_test(\"strsplit1\")\nThis will create a new R Script called “test-strsplit1” which is located in tests -&gt; testthat -&gt; test-strsplit1.R\nThis new R Script will already have some code in it with a simple test:\ntest_that(\"multiplication works\", {\n  expect_equal(2 * 2, 4)\n})\nYou can test this code by going to the “Build” tab and clicking “Test”\nAlthough this is not the code we want to test so we will need to create our own test that relates to our package. Test our package with this code:\ntest_that(\"strsplit1() splits a string\", {\n  expect_equal(strsplit1(\"a,b,c\", split = \",\"), c(\"a\", \"b\", \"c\"))\n})\nThe result should look like this:\n==&gt; devtools::test()\n\nℹ Testing bookDemo\n✔ | F W  S  OK | Context\n✔ |          1 | strsplit1                                                                                               \n\n══ Results ══════════════════════════════════════════════════════════════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Testing framework</span>"
+    ]
+  },
+  {
+    "objectID": "stringr.html",
+    "href": "stringr.html",
+    "title": "11  Enhancing strsplit1 with stringr::str_split",
+    "section": "",
+    "text": "We can change our code to be based on the stringr version rather than strsplit which is the base version of R. This makes our function more functional and able to build upon other packages\nLoad in the stringr package\nuse_package(\"stringr\")\nIf you check the DESCRIPTION file you will notice under “Imports” it now says stringr\nNow we need to edit our code to be more in line with the stringr package\nOpen the strsplit1.R file and edit it to look like this:\n#' Split a string\n#'\n#' @param x A character vector with one element\n#' @param split What to split on\n#'\n#' @return A character vector\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alpha,beta,charlie,delta\"\n#' strsplit1(x, \",\")\nstr_split_one &lt;- function(string, pattern, n = Inf){\n\n  stopifnot(is.character(string), length(string) &lt;=1)\n\n  if (length(string) == 1) {\n    stringr::str_split(string = string, pattern = pattern, n = n)[[1]]\n  } else{\n    character()\n  }\n\n}\nGo ahead and rename the file to fit our new function name\nrename_files(\"strsplit1\", \"str_split_one\")\nR will prompt you to close the old version, click “Yes” and then you can open the newly renamed file\nWe also want to update the roxygen skeleton\n#' Split a string\n#'\n#' @param string A character vector with one element\n#' @inheritParams stringr::str_replace\n#'\n#' @return A character vector\n#' @export\n#'\n#' @examples\n#' x &lt;- \"alpha,beta,charlie,delta\"\n#' str_split_one(x, pattern = \",\")\n#' str_split_one(x, pattern = \",\", n = 2)\nstr_split_one &lt;- function(string, pattern, n = Inf){\n\n  stopifnot(is.character(string), length(string) &lt;=1)\n\n  if (length(string) == 1) {\n    stringr::str_split(string = string, pattern = pattern, n = n)[[1]]\n  } else{\n    character()\n  }\n\n}\nThe test-str_split_one.R file will also need to be updated\n\ntest_that(\"str_split_one() splits a string\", {\n  expect_equal(str_split_one(\"a,b,c\", pattern = \",\"), c(\"a\", \"b\", \"c\"))\n})\n\nRun the test to make sure it passes\nYou might get a warning message that looks like this:\n==&gt; devtools::test()\n\nℹ Testing bookDemo\n✔ | F W  S  OK | Context\n✔ |          1 | str_split_one                                                                                           \n\n══ Results ══════════════════════════════════════════════════════════════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]\nWarning message:\nObjects listed as exports, but not present in namespace:\n• strsplit1 \nTo fix this run document() and then load_all() and your NAMESPACE will be updated with the correct export like so:\n# Generated by roxygen2: do not edit by hand\n\nexport(str_split_one)\nNext we want to add a couple of extra tests to ensure our package is running correctly. Your test-str_split_one.R should look like this:\ntest_that(\"str_split_one() splits a string\", {\n  expect_equal(str_split_one(\"a,b,c\", pattern = \",\"), c(\"a\", \"b\", \"c\"))\n})\n\ntest_that(\"str_split_one() errors if input length &gt; 1\", {\n  expect_error(str_split_one(c(\"a,b\", \"c,d\"), \",\"))\n})\n\ntest_that(\"str_split_one() exposes featuers of stringr::str_split()\", {\n  expect_equal(str_split_one(\"a,b,c\", \",\", n = 2), c(\"a\", \"b,c\"))\n  expect_equal(str_split_one(\"a.b\", stringr::fixed(\".\")), c(\"a\", \"b\"))\n})\nRun another test and confirm that everything passed\n==&gt; devtools::test()\n\nℹ Testing bookDemo\n✔ | F W  S  OK | Context\n✔ |          4 | str_split_one                                                                                           \n\n══ Results ══════════════════════════════════════════════════════════════════════════════════════════════════════════════\n[ FAIL 0 | WARN 0 | SKIP 0 | PASS 4 ]",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Enhancing strsplit1 with stringr::str_split</span>"
+    ]
+  }
+]

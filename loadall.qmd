@@ -1,0 +1,21 @@
+---
+title: "load_all() function"
+---
+
+1.  To get strsplit1 loaded into the console we need to run the function load_all()
+
+    ``` r
+    load_all()
+    ```
+
+Output: Loading "package name"
+
+2.  Now we want to test the strsplit1() function again
+
+    ``` r
+    strsplit1(x, split = ",")
+    ```
+
+Output: \[1\] "alpha" "beta" "charlie" "delta"
+
+3.  Commit the new strsplit1.R file under the "Git" pane in R Studio. Check the box in the "Staged" column then click "Commit", write a short message such as "Create strsplit1 function" and click "Commit" one last time.

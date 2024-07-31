@@ -1,0 +1,17 @@
+---
+title: "check() function"
+---
+
+1.  Let's check how our package is doing so far. You can do this by running the check() function
+
+    ``` r
+    check()
+    ```
+
+Output:
+
+checking DESCRIPTION meta-information ... WARNING Non-standard license specification: `use_mit_license()`, `use_gpl3_license()` or friends to pick a license Standardizable: FALSE
+
+0 errors ✔ \| 1 warning ✖ \| 0 notes ✔
+
+2.  You should get an output similar to this with one warning indicating we don't have a license yet for the package. We will fix this later

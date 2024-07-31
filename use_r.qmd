@@ -1,0 +1,18 @@
+---
+title: "use_r() function"
+---
+
+1.  We want to create a new script with our function in it for our package. We can do this with the use_r() function
+
+    ``` r
+    use_r("strsplit1")
+    ```
+
+2.  Copy over the function from the original R Script into the new R Script called strsplit1.R that was just created from the use_r() function
+
+    ``` r
+    strsplit1 <- function(x, split){
+      
+      strsplit(x, split = split)[[1]]
+    }
+    ```

@@ -1,0 +1,34 @@
+---
+title: "Adding R code to package"
+---
+
+1.  Make sure to reload devtools since we opened a new session when we created the package
+
+    ``` r
+    library(devtools)
+    ```
+
+2.  Open a new R Script and write some code. This code takes the variable x and splits on every ","
+
+    ``` r
+    x <- "alpha,beta,charlie,delta"
+
+    strsplit(x, split = ",")
+    ```
+
+3.  Let's turn it into a function
+
+    ``` r
+    strsplit1 <- function(x, split){
+      
+      strsplit(x, split = split)[[1]]
+    }
+    ```
+
+4.  Test the function
+
+    ``` r
+    strsplit1(x, split = ",")
+    ```
+
+Output: \[1\] "alpha" "beta" "charlie" "delta"

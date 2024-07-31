@@ -1,0 +1,50 @@
+---
+title: "Testing framework"
+---
+
+1.  To further test our package we can use the use_testthat function. Go ahead and run it in the console
+
+    ``` r
+    use_testthat
+    ```
+
+2.  After running that, you will see a new "tests" folder appear in the Files tab.
+
+3.  To create a test, use the use_test() function
+
+    ``` r
+    use_test("strsplit1")
+    ```
+
+4.  This will create a new R Script called "test-strsplit1" which is located in tests -\> testthat -\> test-strsplit1.R
+
+5.  This new R Script will already have some code in it with a simple test:
+
+    ``` r
+    test_that("multiplication works", {
+      expect_equal(2 * 2, 4)
+    })
+    ```
+
+6.  You can test this code by going to the "Build" tab and clicking "Test"
+
+7.  Although this is not the code we want to test so we will need to create our own test that relates to our package. Test our package with this code:
+
+    ``` r
+    test_that("strsplit1() splits a string", {
+      expect_equal(strsplit1("a,b,c", split = ","), c("a", "b", "c"))
+    })
+    ```
+
+8.  The result should look like this:
+
+    ``` r
+    ==> devtools::test()
+
+    ℹ Testing bookDemo
+    ✔ | F W  S  OK | Context
+    ✔ |          1 | strsplit1                                                                                               
+
+    ══ Results ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    [ FAIL 0 | WARN 0 | SKIP 0 | PASS 1 ]
+    ```

@@ -3,12 +3,21 @@ project:
 
 book:
   title: "packagesBook"
-  author: "Norah Jones"
+  author: "Alex Boyle"
   date: "7/30/2024"
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
+    - git.qmd
+    - addCode.qmd
+    - use_r.qmd
+    - loadall.qmd
+    - check.qmd
+    - description.qmd
+    - documentation.qmd
+    - install.qmd
+    - test.qmd
+    - stringr.qmd
     - references.qmd
 
 bibliography: references.bib

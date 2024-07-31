@@ -1,0 +1,35 @@
+# Setting up Git
+
+In this chapter we will look at how to set up Git for our R package.
+
+1.  Open GitHub and create a new repository
+
+2.  Open a new terminal in R Studio
+
+3.  We need to connect the remote repository from GitHub to our local repository
+
+4.  Initialize Git
+
+    ``` bash
+    git init
+    ```
+
+5.  Add your project files to the Git repository
+
+    ``` bash
+    git add .
+    ```
+
+6.  Commit the files with the message "Initial commit"
+
+    ``` bash
+    git commit -m "Initial commit"
+    ```
+
+7.  Add the GitHub remote repository
+
+    ``` bash
+    git remote add origin https://github.com/Alex-B-7/bookDemo.git
+    ```
+
+8.  You can now check your repository on GitHub and see all of your project files

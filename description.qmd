@@ -1,0 +1,38 @@
+---
+title: "Description and License"
+---
+
+1.  Open the "DESCRIPTION" file that was created for you when we first create the package
+
+2.  Edit the title to fit your package description. Example: "Exciting package for working with strings"
+
+3.  Also edit the Author with your first and last name and email
+
+4.  You can also change the description to explain more what your package is about
+
+5.  When you are done editing the "DESCRIPTION" file it should look something like this:
+
+``` bash
+Package: bookDemo
+Title: Exciting package for working with strings
+Version: 0.0.0.9000
+Authors@R: 
+    person("Alex", "Boyle", , "abboyle@ksu.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: String manipulation package that goes above and beyond what other packages do
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+```
+
+6.  Now we can set up the license. I am going to use an mit license for this package
+
+    ``` r
+    use_mit_license()
+    ```
+
+7.  This will update the license portion of the "DESCRIPTION" file and also create a new "LICENSE" file and "LICENSE.md" file
+
+8.  Commit these changes

@@ -1,0 +1,15 @@
+---
+title: "install() the package"
+---
+
+1.  We are ready to install the package. Type "install()" in the console
+
+2.  You can now search your package in the "Packages" tab and see that your package is installed
+
+3.  Test to make sure the package is working
+
+    ``` r
+    strsplit1(x, ",")
+    ```
+
+Output: "alpha" "beta" "charlie" "delta"

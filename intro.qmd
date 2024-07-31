@@ -1,9 +1,23 @@
-# Introduction
+# Getting started
 
-This is a book created from markdown and executable code.
+First you need to open a new session in R Studio.
 
-See @knuth84 for additional discussion of literate programming.
+Install the devtools package if you don't already
 
-```{r}
-1 + 1
+``` r
+install.packages("devtools")
 ```
+
+Load the devtools package
+
+``` r
+library(devtools)
+```
+
+Create the new package
+
+``` r
+create_package("~/Desktop/bookDemo")
+```
+
+After you create the package R Studio will open a new session in the working directory that you created the package with. Creating the package will create some files with it including a "DESCRIPTION" and "NAMESPACE" file along with some others.
